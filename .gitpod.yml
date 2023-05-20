@@ -1,4 +1,4 @@
 tasks:
   - name: Docker
     init: |
-      docker run -v $PWD:/workspace iron/python:2.7.0
+      docker run -v $PWD:/workspace iron/python:2.7
