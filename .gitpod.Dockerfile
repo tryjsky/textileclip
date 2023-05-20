@@ -1,13 +1,6 @@
-FROM mcr.microsoft.com/dotnet/sdk:5.0-buster-slim-amd64
+FROM ubuntu:bionic
 
-RUN  apt-get update && \
-  apt-get install -y apt-transport-https build-essential git curl && \
-  cd /tmp && \
-  curl -L https://github.com/IronLanguages/ironpython2/archive/refs/tags/ipy-2.7.9.tar.gz | tar xzf - && \
-  cd ironpython2-ipy-2.7.9 && \
-  true
-#  git init && \
-#  make && \
-#  make install && \
-#  cd .. && \
-#  rm -rf ironpython2-ipy-2.7.9
+RUN  sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF && \
+  echo "deb https://download.mono-project.com/repo/ubuntu stable-bionic main" | sudo tee /etc/apt/sources.list.d/mono-official-stable.list && \
+  apt-get update && \
+  sudo apt install -y git mono-devel libmono-system-numerics4.0-cil
