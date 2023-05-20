@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/sdk:mcr5.0-buster-slim-amd64
+FROM mcr.microsoft.com/dotnet/sdk:5.0-buster-slim-amd64
 
 RUN  apt-get update && \
   apt-get install -y apt-transport-https build-essential git curl && \
