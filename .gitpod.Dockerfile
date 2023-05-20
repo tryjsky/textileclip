@@ -1,4 +1,5 @@
-FROM mono:5
+#FROM mono:5
+FROM mcr.microsoft.com/dotnet/sdk:6.0-bullsey-slim
 
 RUN sed -i '-es/deb.debian.org/archive.debian.org/' /etc/apt/sources.list && \
   apt-get update; \
