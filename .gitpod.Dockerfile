@@ -8,5 +8,5 @@ RUN apt-get update && \
   tee /etc/apt/sources.list.d/mono-official-stable.list && \
   apt-get update && \
   apt install -y git mono-devel && \
-  curl -o /tmp/ironpython_2.7.9.deb https://github.com/IronLanguages/ironpython2/releases/download/ipy-2.7.9/ironpython_2.7.9.deb && \
+  curl -L -o /tmp/ironpython_2.7.9.deb https://github.com/IronLanguages/ironpython2/releases/download/ipy-2.7.9/ironpython_2.7.9.deb && \
   dpkg -i /tmp/ironpython_2.7.9.deb
