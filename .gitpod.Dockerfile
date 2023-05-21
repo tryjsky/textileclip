@@ -1,6 +1,12 @@
-FROM mcr.microsoft.com/dotnet/sdk:2.1-bionic
+FROM ubuntu:bionic
 
 RUN apt-get update && \
-  apt install -y ca-certificates unzip && \
-  wget -P /opt/ https://github.com/IronLanguages/ironpython2/releases/download/ipy-2.7.9/IronPython.2.7.9.zip && \
-  unzip -d /opt/ /opt/IronPython.2.7.9.zip
+  apt install -y ca-certificates gnupg && \
+  gpg --homedir /tmp --no-default-keyring --keyring /usr/share/keyrings/mono-official-archive-keyring.gpg \
+  --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF && \
+  echo "deb [signed-by=/usr/share/keyrings/mono-official-archive-keyring.gpg] https://download.mono-project.com/repo/ubuntu stable-bionic main" | \
+  tee /etc/apt/sources.list.d/mono-official-stable.list && \
+  apt-get update && \
+  apt install -y git mono-devel && \
+  wget -P /tmp/ https://github.com/IronLanguages/ironpython2/releases/download/ipy-2.7.9/ironpython_2.7.9.deb && \
+  dpkg -i /tmp/ironpython_2.7.9.deb
