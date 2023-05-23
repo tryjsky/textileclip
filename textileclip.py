@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env ipy
 # -*- coding: utf-8 -*- #
 
 
@@ -130,4 +130,5 @@ def main():
 		set_text(parser.table)
 
 
-main()
+if __name__ == "__main__":
+	main()
